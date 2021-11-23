@@ -1,0 +1,241 @@
+*, h1 {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     list-style-type: none;
+}
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&family=Space+Mono&display=swap');
+
+html {
+     overflow-x: hidden;
+}
+
+body {
+     background: linear-gradient(to top right,rgb(235, 78, 185), rgb(205, 2, 83), rgb(227, 107, 1),rgb(237, 211, 14));
+     /* background-image: linear-gradient(to bottom, red, yellow, grey, lime); */
+     width: 100%;
+     height: 100vh;
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     overflow-x: hidden;
+}
+
+.isWrapp {
+     position: relative;
+     background: linear-gradient(to bottom, rgb(0, 0, 0, 0.07) ,rgb(0, 0, 0, 0.4));
+     /* background-color: #fff; */
+     width: 100%;
+     height: 100vh;
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+}
+
+.Text, .Text2 {
+     position: absolute;
+     display: block;
+     margin: 0px auto;
+     width: 45%;
+     text-align: center;
+     color: #fff;
+     /* transform: rotate(-10deg); */
+     left: 27%;
+     bottom: 26%;
+     transition: 0.5s ease-in-out;
+}
+
+.Text h1, .Text2 h1 {
+     font-size: 48px;
+     font-weight: bold;
+     font-family: 'Roboto', sans-serif;
+     letter-spacing: 1px;
+     margin-bottom: 10px;
+     transition: 0.2s ease-in;
+}
+
+.Text p {
+     font-size: 18px;
+     font-family: 'Roboto', sans-serif;
+}
+
+.startQuiz {
+     border: 1px solid #fff;
+     background-color: transparent;
+     color: #fff;
+     font-family: 'Space Mono', monospace;
+     max-width: 380px; width: 380px;
+     height: 55px;
+     transition: 0.2s ease-in-out;
+}
+
+.startQuiz p {
+     transition: 0.2s ease-in-out;
+     margin: 0px;
+}
+
+.startQuiz:hover {
+     color: #111;
+     background-color: rgb(255, 255, 255);
+}
+
+.startQuiz:focus {
+     outline: none;
+}
+
+/* responsive */
+
+@media (max-width: 770px) {
+     .Text, .Text2 {
+          width: 80%;
+          left: 8%;
+     }
+     .startQuiz {
+          max-width: 300px; width: 300px;
+          height: 45px;
+     }
+}
+
+@media (max-width: 430px) {
+     .Text, .Text2 {
+          bottom: 22%;
+     }
+     .Text2 {
+          left: 10%;
+     }
+     .Text h1, .Text2 h1{
+          margin-bottom: 5px;
+          font-size: 35px;
+     }
+     .Text p {
+          font-size: 17px;
+          line-height: 20px;
+     }
+     .startQuiz {
+          max-width: 250px; width: 250px;
+          height: 40px; 
+     }
+}
+
+.sanagich p {
+     position: absolute;
+     bottom: -49%;
+     left: 45%;
+     font-size: 20px;
+     font-family: 'Roboto';
+     font-weight: 400;
+}
+
+/* savollar styllari */
+
+.Text2 {
+     bottom: 2000px;
+     transition: 0.2s ease-out;
+     /* transform: translateY(); */
+}
+
+/* javob Tablolari */
+
+.resultat {
+     margin: 20px 0;
+     text-align: center;
+     color: gainsboro;
+     font-size: 25px;
+     font-weight: 700;
+}
+
+.card {
+     display: block;
+     width: 90%;
+     /* background-color: rgb(255, 99, 71, 0.3); */
+     color: rgb(248, 234, 234);
+     font-size: 20px;
+     padding: 20px 40px;
+     margin: 20px auto;
+     text-align: center;
+     font-family: 'Roboto', sans-serif;
+     border: none;
+}
+
+.tugriJavob {
+     display: block;
+     margin: 0 auto;
+     margin-bottom: 14px;
+     border-radius: 10px 0 10px 0;
+     width: 40%;
+     background-color: rgb(21, 197, 21);
+}
+
+.hatoJavob {
+     display: block;
+     margin: 0 auto;
+     margin-bottom: 14px;
+     border-radius: 0 10px 0 10px;
+     width: 40%;
+     background-color: rgb(245, 8, 39);
+}
+
+ /* scroll kodlari */
+::-webkit-scrollbar {
+     width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+     background-color: rgb(224, 10, 239);
+     border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+     background-color: transparent;
+}
+
+/* fan Ismlari ruyhati */
+
+.fanlarMenyusi {
+     position: absolute;
+     top: 20%;
+     left: 20%;
+}
+
+.fanlarMenyusi button {
+     background-color: #777df6;
+     border: none;
+     border-radius: 10px;
+     min-width: 180px;
+     padding: 10px 0;
+     margin: 15px 0;
+     font-size: 20px;
+     font-family: 'Roboto';
+     color: rgb(79, 248, 115);
+
+}
+.fanlarMenyusi button:focus {
+     outline: none;
+}
+
+@media (max-width: 767px) {
+     .fanlarMenyusi {
+          left: 0%;
+     }
+     .fanlarMenyusi button {
+          margin: 0;
+     }
+     .fanlarMenyusi .col-md-3 {
+          margin: 0 10px;
+     }
+     .isWrapp {
+          height: 137vh;
+     }
+}
+
+@media (max-width: 400px) {
+     .Mname {
+          font-size: 30px!important;
+     }
+     .isWrapp {
+          height: 146vh;
+     }
+}

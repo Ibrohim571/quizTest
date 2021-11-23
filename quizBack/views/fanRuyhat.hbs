@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+     <title>Quiz table</title>
+     <style>
+          * {margin: 0; padding: 0; box-sizing: border-box;}
+          @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap');
+          .isWrapp {
+               background-image: radial-gradient(circle, rgb(17, 231, 46), rgb(186, 48, 210), rgb(227, 114, 33));
+               width: 100%;
+               height: 100vh;
+               padding: 50px;
+          }
+          .card {
+               background-color: transparent;
+               color: rgb(74, 250, 61);
+               padding: 20px;
+               font-family: 'Montserrat';
+               border: 1px solid rgb(246, 126, 6);
+               border-radius: 10px;
+          }
+          .card-title h3 {font-size: 30px; margin: 0;}
+
+          .card-body .fan {
+               position: relative;
+               display: block;
+               margin: 0 auto; 
+               margin-bottom: 20px;
+               padding: 12px 0;
+               background-color: rgb(224, 54, 54);
+               color: rgb(21, 215, 21);
+               min-width: 250px;
+               border: none;
+               border-radius: 7px;
+               font-size: 22px;
+          }
+
+          .card-body .fan:hover::after {
+               width: 100%;
+          }
+
+          .card-body .fan::after {
+               content: '';
+               position: absolute;
+               bottom: 0;
+               left: 0;
+               height: 9px;
+               width: 0%;
+               background-color: #ee0ab1;
+               border-radius: 0 0 7px 7px;
+               transition: 0.5s ease-in-out; 
+          }
+          .card-body .fan:focus {
+               outline: none;
+          }
+          .card-body input {
+               display: block;
+               margin: 0 auto;
+               border-radius: 15px 0 15px 0;
+               background-color: rgba(255, 253, 253, 0.2);
+               font-size: 22px;
+               border: 2px solid rgb(243, 47, 151);
+               width: 60%;
+               transition: 0.4s ease-in;
+          }
+          .card-body input:focus {
+               box-shadow: none;
+               background-color: rgba(255, 253, 253, 0.4);
+               border-radius: 0 15px 0 15px;
+               border-color: rgb(65, 7, 127);
+          }
+          .card-body .btn-success {
+               font-size: 22px;
+               padding: 10px 50px;
+               background-color: rgb(195, 51, 169);
+               border: none;
+               margin-top: 20px;
+          }
+          {{!-- Responsive --}}
+          @media (max-width: 1035px) {
+               .isWrapp {
+                    height: 120vh;
+               }
+               .card {
+                    padding: 20px 0;
+               }
+               .card-body {
+                    padding-bottom: 0;
+               }
+               .card-body .fan {
+                    min-width: 174px;
+               }
+          }
+          @media (max-width: 765px) {
+               .isWrapp {
+                    height: 165vh;
+                    padding: 30px;
+               }
+               .card-body .fan {
+                    min-width: 270px;
+               }
+               .card-body input {
+                    width: 70%;
+               }
+          }
+          @media (max-width: 400px) {
+               .card-body .fan {
+                    min-width: 200px;
+               }
+               .card-body input {
+                    width: 90%;
+               }
+          }
+     </style>
+</head>
+<body>
+    <div class="isWrapp">
+         <div class="card">
+              <div class="card-title"><h3 class="text-center">Mavjud fanlar</h3></div>
+              <div class="card-body">
+                   <div class="row">
+                         {{#each fanIsm}}
+                           <div class="col-md-4">
+                              <form action="/{{this.ism}}" method="POST">
+                                   <button class="fan" type="submit">{{this.ism}}</button>
+                                   <input type="hidden" name="inputIsm" value="{{this.ism}}">
+                              </form>
+                           </div>
+                         {{/each}}
+                   </div>
+
+                    <form action="/addFan" method="POST">
+                         <input class="form-control" type="text" name="ism" placeholder="Yangi fan">
+                         <button class="btn btn-success d-block mx-auto">Add new fan</button>
+                    </form>
+              </div>
+         </div>
+    </div>
+</body>
+</html>

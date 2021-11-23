@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Admin password</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<style>
+     * {margin: 0; padding: 0; box-sizing: border-box;}
+     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&family=Space+Mono&display=swap');
+
+     html, body {
+          overflow-x: hidden!important;
+          background-color: black
+     }
+     .boshi {
+          position: relative;
+          background-color: rgb(247, 98, 12);
+          padding: 13px 0;
+          font-family: 'Montserrat';
+          width: 100%;
+     }
+     .fanningIsmi {
+          font-size: 33px;
+          text-align: center;
+          font-weight: 700;
+          margin: 0;
+          color: rgb(241, 208, 208);
+     }
+     .boshi .btn {
+          position: absolute;
+          top: 14px;
+          right: 15px;
+     }
+     .boshi .btn:focus {
+          box-shadow: none;
+     }
+
+     .table thead tr {
+          font-family: 'Montserrat';
+          font-size: 21px;
+          color: rgb(41, 239, 34);
+     }
+     .table tbody tr, tbody tr button {
+          color: rgb(241, 241, 67);
+          font-size: 17px;
+          font-family: 'Roboto', sans-serif;
+          transition: 0.1s ease-in;
+          background-color: transparent;
+          border: none;
+     }
+     tbody tr button:hover {
+          color: rgb(136, 136, 3);
+     }
+
+     .form-group {
+          position: absolute;
+          top: 68px;
+          left: -800px;
+          display: block;
+          margin: 0px auto;
+          margin-bottom: 15px;
+          width: 50%;
+          padding: 20px;
+          background-color: rgb(104, 106, 241);
+          border-radius: 5px;
+          font-family: 'Montserrat';
+          transition: 0.3s ease-in;
+     }
+
+     .form-group label {
+          text-align: center!important;
+          font-size: 20px;
+          color: rgb(39, 236, 25);
+          font-weight: 600;
+     }
+     .form-group input {
+          background-color: rgba(246, 225, 225, 0.3);
+          transition: 0.2s ease-in-out;
+          font-size: 18px;
+          font-family: 'Roboto', sans-serif;
+          border-color: rgb(86, 239, 102);
+          color: rgb(154, 98, 7)!important;
+     }
+     .form-group input:focus {
+          background-color: rgba(251, 236, 236, 0.7);
+          box-shadow: none;
+     }
+     .form-group button {
+          font-weight: 800;
+          background-color: rgb(94, 243, 94);
+          min-width: 180px;
+          color: rgb(241, 153, 12);
+          font-size: 20px;
+          letter-spacing: 2px;
+     }
+     @media (max-width: 700px) {
+          .form-group {
+               width: 70%;
+          }
+     }
+     @media screen and (max-width: 600px) {
+          html, body {
+               overflow-x: inherit!important;
+          }
+     }
+
+     @media screen and (max-width: 510px) {
+          .fanningIsmi {
+               font-size: 20px;
+          }
+          .boshi .btn {
+               top: 6px;
+          }
+     }
+</style>
+<body>
+     <section class="boshi">
+          <div class="container-fluid">
+               <button class="btn btn-info addPupil" style="left: 10px;"><i class="bi bi-arrow-right"></i></button>
+               <h3 class="fanningIsmi">{{fanIsm}} fani savollari</h3>
+               {{#each result}}
+                    <a href="/dbDelete/{{this.fanIsm}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+               {{/each}}
+          </div>
+     </section>
+
+     <table class="table table-dark table-bordered table-striped table-hover text-center m-0">
+          <thead>
+               <tr>
+                    <th>Savol</th>
+                    <th>javob</th>
+                    <th>variant</th>
+                    <th>variant</th>
+                    <th>variant</th>
+                    <th>Delete</th>
+               </tr>
+          </thead>
+          <tbody>
+               {{#each result}}
+               <tr>
+                    <td>{{this.savol}}</td>
+                    <td>{{this.javob}}</td>
+                    <td>{{this.variant1}}</td>
+                    <td>{{this.variant2}}</td>
+                    <td>{{this.variant3}}</td>
+                    <form action="/quizDelete/{{this.savol}}" method="POST">
+                         <td><button type="submit"><i class="bi bi-trash" style="color: rgb(255, 8, 8); cursor: pointer;"></i></button></td>
+                         <input type="hidden" name="dbIsm" value="{{this.fanIsm}}">
+                    </form>
+               </tr>
+               {{/each}}
+          </tbody>
+     </table>
+     
+     <div class="orqaRasm">
+          <form action="/add/newQuiz" class="form-group" method="POST">
+               <label for="savol">your question</label>
+               <input class="form-control" type="text" name="savol" id="savol">
+               <label for="javob">true answeer</label>
+               <input class="form-control" type="text" name="javob" id="javob">
+               <label for="variant">variant</label>
+               <input class="form-control" type="text" name="variant1" id="variant">
+               <label for="variant">variant</label>
+               <input class="form-control" type="text" name="variant2" id="variant">
+               <label for="variant">variant</label>
+               <input class="form-control" type="text" name="variant3" id="variant">
+               <input type="hidden" value="{{fanIsm}}" name="dataName">
+               <button class="btn d-block mt-4 mx-auto" type="submit">Add new quiz</button>
+          </form>
+     </div>
+</body>
+<script> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<script>
+     let almash = true;
+     $(document).ready(function() {
+          $('.addPupil').click(function() {
+               if (almash == true) {
+                    $('.form-group').css("left", "22%");
+                    $(".addPupil i").removeClass("bi-arrow-right");
+                    $(".addPupil i").addClass("bi-arrow-left");
+                    almash = false;
+               } else {
+                    $('.form-group').css("left", "-800px");
+                    $(".addPupil i").addClass("bi-arrow-right");
+                    $(".addPupil i").removeClass("bi-arrow-left");
+                    almash = true;
+               }
+          })
+     })
+</script>
+</html>

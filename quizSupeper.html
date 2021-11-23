@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="D:\VS code natija\bootstrap4,5/css/bootstrap.min.css">
+     <link rel="stylesheet" href="D:\VS code natija\iconkalar\normalize\normalize.css">
+     <link rel="stylesheet" href="quiz.css">
+     <title>Supper Quiz app</title>
+</head>
+<body>
+     
+     <div class="isWrapp">
+          <div class="container">
+               <h1 class="text-center pt-5 Mname" style="font-size: 40px; font-family: 'Space Monoon'; font-weight: 600;">
+                    Buxoriy markazi fanlar testi
+               </h1>
+               <div class="fanlarMenyusi text-center">
+                    <div class="row">
+                         <script>
+                              fetch(`http://localhost:5000/fanIsmget/ismlar/`)
+                              .then(res => res.json())
+                              .then(quizs => {
+                                   let cardGroup = document.querySelector('.fanlarMenyusi .row');
+                                   cardGroup.innerHTML = (
+                                        quizs.map((quiz, index) => 
+                                        `<div class="col-md-3 p-0">
+                                        <button class="fanName" key=${index}>${(quiz.ism)}</button>
+                                        </div>`
+                                        )
+                                   )
+                                   
+                                   
+                              })
+               
+                         </script>
+                    </div>
+               </div>
+
+               <div class="Text d-none">
+                    <h1>JS Is Weird</h1>
+                    <p>
+                         JavaScript is a great programming language, but thanks to the
+                         fact that its initial release was built in only ten days back in 1995,
+                         coupled with the fact that JS is backward-compatible, it's also a bit weird.
+                         It doesn't always behave the way you might think. In this quiz, you'll be
+                         shown 25 quirky expressions and will have to guess the output. Even if you're
+                         a JS developer, most of this syntax is probably, and hopefully, not something
+                         you use in your daily life.
+                    </p>
+
+                    <button class="startQuiz mt-1 letStart">Let's start</button>
+               </div>
+          </div>
+          <div class="Text2">
+               <h1 class="quizSavol mb-1"></h1>
+
+               <button class="startQuiz variant my-2" id="variant1"><p></p></button>
+               <button class="startQuiz variant my-2" id="variant2"><p></p></button>
+               <button class="startQuiz variant my-2" id="variant3"><p></p></button>
+               <button class="startQuiz variant mt-2" id="variant4"><p></p></button>
+
+               <div class="sanagich">
+                    <p>1 / 10</p>
+               </div>
+          </div>
+          <section class="node d-none" id="progresscha">
+               <div class="progress" style="border-radius: 0;">
+                    <div class="progress-bar progress-bar-animated bg-success" style="width: 100%;">
+                    </div>
+                </div>
+          </section>
+     </div>  
+
+     <div id="javobTahlil" class="d-none">
+          <div class="container">
+               <div class="javobTablo">
+                    <p class="resultat" style="text-align: center; color: #fff;  font-size: 25px;"></p>
+               </div>
+          </div>
+     </div>     
+
+</body>
+<script> </script>
+<script src="D:\VS code natija\jquery_kutubhona\jquery\jquery.min.js"></script>
+<script src="D:\VS code natija\bootstrap4,5\js\bootstrap.min.js"></script>
+<script src="Quiz.js"></script>
+<script src="fetch.js"></script>
+<script src="Hover.js"></script>
+</html>
